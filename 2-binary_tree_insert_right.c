@@ -16,20 +16,12 @@ binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 	node = NULL;
 	if (!parent)
 		return (NULL);
-	if ((parent->n) < value)
+	node = binary_tree_node(parent, value);
+	if (parent->right)
 	{
-		if (parent->right && (parent->right->n) <= value)
-			node = binary_tree_insert_right(parent->right, value);
-		else
-		{
-			node = binary_tree_node(parent, value);
-			if (parent->right)
-			{
-				parent->right->parent = node;
-				node->right = parent->right;
-			}
-			parent->right = node;
-		}
+		parent->right->parent = node;
+		node->right = parent->right;
 	}
+	parent->right = node;
 	return (node);
 }
