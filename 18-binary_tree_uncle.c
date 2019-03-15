@@ -19,7 +19,7 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node)
 
 	if (!p->parent)
 		return (NULL);
-	
+
 	if (p->parent->left && p->parent->left != p)
 		return (p->parent->left);
 	else if (p->parent->right && p->parent->right != p)
