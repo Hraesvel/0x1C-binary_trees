@@ -1,18 +1,5 @@
 #include "binary_trees.h"
 #include <stdio.h>
-
-/**
- * min - find the smallest of two values
- * @a: left side
- * @b: right side
- *
- * Return: smallest value (INT)
- */
-int min(int a, int b)
-{
-	return ((a <= b) ? a : b);
-}
-
 /**
  * is_full - Logic to check if tree is full
  * @tree: pointer to a binary tree
@@ -23,7 +10,7 @@ int is_full(const binary_tree_t *tree)
 {
 
 	if (!tree)
-		return (0);
+		return (1);
 	if ((!tree->left && tree->right) || (!tree->right && tree->left))
 		return (0);
 	if (tree->left)
@@ -47,6 +34,6 @@ int binary_tree_is_full(const binary_tree_t *tree)
 	if (!tree->left && !tree->right)
 		return (1);
 	if (tree->left && tree->right)
-		return (min(is_full(tree->left), is_full(tree->right)));
+		return (is_full(tree->left) && is_full(tree->right));
 	return (0);
 }
